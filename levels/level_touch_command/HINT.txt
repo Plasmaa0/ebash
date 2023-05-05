@@ -1,0 +1,3 @@
+use touch command to create file
+syntax:
+touch <filename>

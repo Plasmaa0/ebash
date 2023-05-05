@@ -1,0 +1,9 @@
+[
+    {
+        "completed": false,
+        "name": "touch command",
+        "description": "Sample decription for level touch command",
+        "folder": "levels/level_touch_command",
+        "uuid": "ad7f051c-23a3-45ed-8256-f5f0f7d9f50e"
+    }
+]

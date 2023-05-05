@@ -25,9 +25,9 @@ def create_level(name, folder, description, hint, readme):
         "uuid": str(uuid.uuid4())
     }
     mkdir(folder_name)
-    with open(f"{folder_name}/HINT.md", 'w') as hint_file:
+    with open(f"{folder_name}/HINT.txt", 'w') as hint_file:
         hint_file.write(hint)
-    with open(f"{folder_name}/README.md", 'w') as readme_file:
+    with open(f"{folder_name}/README.txt", 'w') as readme_file:
         readme_file.write(readme)
     with open(f"{folder_name}/check.sh", 'w') as script_file:
         script_file.write('# write your checking code here. it must output 0 or 1 as False/True as result of check.\necho 1')
