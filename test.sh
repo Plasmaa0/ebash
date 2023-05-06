@@ -9,16 +9,16 @@ cmd=(
     --hide-column=5
     --print-column=5
 )
-
+start_folder=$(pwd)
 level_folder=$(python ebash.py | xargs yad "${cmd[@]}" | python start_game.py)
 echo Starting level!
 
 quest_hint () {
-    cat "$level_folder"/HINT.txt
+    cat "$start_folder"/"$level_folder"/HINT.txt
 }
 
 quest_help () {
-    cat "$level_folder"/README.txt
+    cat "$start_folder"/"$level_folder"/README.txt
 }
 
 quest_help
@@ -26,7 +26,7 @@ quest_help
 echo "If you want to see this help message again call quest_help function"
 
 check (){
-  check_result=$(sh "$level_folder"/check.sh)
+  check_result=$(sh "$start_folder"/"$level_folder"/check.sh)
   if [[ "$check_result" == "1" ]]; then
       echo Completed!
       unset -f check
