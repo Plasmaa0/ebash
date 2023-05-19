@@ -36,7 +36,7 @@ stop (){
 args=("$@")
 
 check (){
-  check_result=$(sh "$level_folder"/check.sh)
+  check_result=$(sh "$start_folder"/"$level_folder"/check.sh)
   if [[ "$check_result" == "1" ]]; then
       echo Completed!
     #   echo exit code will be ${args[1]}
