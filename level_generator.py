@@ -10,12 +10,12 @@ def generate_random_levels(amount: int = 15) -> None:
     levels = []
     rstr = lambda length: ''.join(random.sample(ascii_lowercase * 100, length))
     for _ in range(amount):
-        levels.append(create_level(rstr(10), rstr(10), rstr(100), rstr(50), rstr(500)))
+        levels.append(create_level(rstr(10), rstr(10), rstr(100), rstr(50), rstr(500),rstr(30)))
     with open('levels.json', 'w') as f:
         json.dump(levels, f, indent=4)
 
 
-def create_level(name, folder, description, hint, readme):
+def create_level(name, folder, description, hint, readme,about):
     folder_name = 'levels/level_' + folder.lower().replace(' ', '_')
     level = {
         "completed": False,
@@ -29,6 +29,8 @@ def create_level(name, folder, description, hint, readme):
         hint_file.write(hint)
     with open(f"{folder_name}/README.txt", 'w') as readme_file:
         readme_file.write(readme)
+    with open(f"{folder_name}/ABOUT.txt", 'w') as about_file:
+        about_file.write(about)
     with open(f"{folder_name}/check.sh", 'w') as script_file:
         script_file.write('# write your checking code here. it must output 0 or 1 as False/True as result of check.\necho 1')
     return level

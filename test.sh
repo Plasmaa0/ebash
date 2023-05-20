@@ -34,7 +34,7 @@ stop (){
 }
 
 args=("$@")
-
+start_folder=$(pwd)
 check (){
   check_result=$(sh "$start_folder"/"$level_folder"/check.sh)
   if [[ "$check_result" == "1" ]]; then
