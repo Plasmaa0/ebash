@@ -1,5 +1,6 @@
 from textual.app import App, ComposeResult, events
-from textual.widgets import DataTable, Static 
+from textual.widgets import DataTable, Static, Footer, Header
+from textual.binding import Binding
 from textual.containers import VerticalScroll
 from rich.text import Text
 import os
@@ -28,14 +29,20 @@ def get_table_data():
     return table
 
 class LevelSelectTable(App):
+    BINDINGS = [
+        Binding(key="enter", action="proceed", description="Play currently selected level"),
+        Binding(key="q", action="quit", description="Quit the app"),
+        Binding(key="l", action="leaderboard", description="Show the leaderboard")
+    ]
     def compose(self) -> ComposeResult:
         yield VerticalScroll(
-            Static("[green]Select level[/green] and hit [green]enter[/green]."),
-            Static("Press [red]q[/red] to [red]exit[/red]."),
-            Static("Press [cyan]l[/cyan] to see the [cyan]leaderboard[/cyan]."),
-            DataTable()
+            # Static("[green]Select level[/green] and hit [green]enter[/green]."),
+            # Static("Press [red]q[/red] to [red]exit[/red]."),
+            # Static("Press [cyan]l[/cyan] to see the [cyan]leaderboard[/cyan]."),
+            DataTable(),
+            Footer()
         )
-
+    
     def on_mount(self) -> None:
         table = self.query_one(DataTable)
         table.add_columns('name','about')
@@ -44,17 +51,13 @@ class LevelSelectTable(App):
             table.add_row(*row, label=label)
         table.cursor_type = "row"
 
-    def on_key(self, event: events.Key) -> None:
-        if event.key == 'enter':
-            self.key_enter()
-
-    def key_l(self):
+    def action_leaderboard(self):
         self.exit('LEADERBOARD')
     
-    def key_q(self):
+    def action_quit(self):
         self.exit()
     
-    def key_enter(self):
+    def action_proceed(self):
         table = self.query_one(DataTable)
         # exit(row_key)
         row = table.get_row(table.coordinate_to_cell_key(table.cursor_coordinate).row_key)

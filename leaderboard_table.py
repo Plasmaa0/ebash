@@ -1,6 +1,7 @@
 from textual.app import App, ComposeResult
-from textual.widgets import Tree, Static
+from textual.widgets import Tree, Static, Footer
 from textual.containers import VerticalScroll
+from textual.binding import Binding
 import json
 
 def read_leaderboard():
@@ -25,6 +26,9 @@ def add_to_leaderboard(player, level):
     write_leaderboard(rating)
 
 class TreeApp(App):
+    BINDINGS = [
+        Binding(key="escape", action="quit", description="Close leaderboard table"),
+    ]
     
     def __init__(self, player_name):
         super().__init__()
@@ -42,13 +46,13 @@ class TreeApp(App):
             for completed_level in player_rating[1]:
                 player_entry.add_leaf(completed_level)
         yield VerticalScroll(
-            Static("[green bold]Press escape key to exit"),
-            tree   
+            # Static("[green bold]Press escape key to exit"),
+            tree,
+            Footer()
         )
 
-    def on_key(self, event) -> None:
-        if event.key == 'escape':
-            self.exit()
+    def action_quit(self) -> None:
+        self.exit()
 
 if __name__ == "__main__":
     app = TreeApp('plasmaa0')
