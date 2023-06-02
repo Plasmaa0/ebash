@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ status }}</title>
+</head>
+
+<body>
+    <h1>{{ message }}</h1>
+    <p>You will be redirected in 5 seconds...</p>
+
+    <script>
+        setTimeout(function () {
+            window.location.href = "/";
+        }, 5000);
+    </script>
+</body>
+
+</html>

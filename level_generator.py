@@ -48,7 +48,7 @@ if args.name is not None:
     name = args.name[0]
     print(f"Generating template for level with name '{name}'.")
     try:
-        level = create_level(name, name, f"Sample decription for level {name}", f"Sample hint for level {name}\n", f"Sample readme for level {name}\n")
+        level = create_level(name, name, f"Sample decription for level {name}", f"Sample hint for level {name}\n", f"Sample readme for level {name}\n", f"Sample about for level {name}\n")
         try:
             with open('levels.json', 'r') as f:
                 levels = json.load(f)
