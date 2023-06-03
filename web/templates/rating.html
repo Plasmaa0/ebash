@@ -6,27 +6,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rating</title>
+    <style>
+       body{
+        padding: 25px;
+       }
+        .tc{
+          display: flex;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+        }
+        .term{
+            display: flex;
+            justify-content: space-between;
+        }
+        .term > table{
+            display:block;
+            width: 30%;
+            border: 2px solid #22ff34;;
+        }
+        /* Set the background color to black */
+body {
+  background-color: #1d1d1d;
+}
+
+/* Set the default text color to white */
+body, p, span, h1, h2, h3, h4, h5, h6, li, a {
+  color: #fff;
+}
+
+/* Set the link color to a bright blue */
+a {
+  color: #69c;
+}
+
+/* Set the hover color to a lighter shade of blue */
+a:hover {
+  color: #8ad;
+}
+
+/* Style code blocks with a dark gray background and light gray text */
+pre {
+    background-image: linear-gradient(to bottom right, #22ff34, #ff00dd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 10px;
+  }
+  
+
+/* Set the color of comments in code blocks to a dim gray */
+pre code.comment {
+  color: #999;
+}
+
+/* Style headings with a bold font and a light blue underline */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  border-bottom: 2px solid #69c;
+}
+
+/* Style blockquotes with a dark gray background and light gray text */
+blockquote {
+  background-color: #2b2b2b;
+  color: #ddd;
+}
+
+/* Style horizontal rules with a light gray color */
+hr {
+  border-top: 1px solid #ccc;
+}
+
+    </style>
 </head>
 
 <body>
-    <pre>
-EEEEEEEEEEEEEEEEEEEEEEBBBBBBBBBBBBBBBBB               AAA                 SSSSSSSSSSSSSSS HHHHHHHHH     HHHHHHHHH
-E::::::::::::::::::::EB::::::::::::::::B             A:::A              SS:::::::::::::::SH:::::::H     H:::::::H
-E::::::::::::::::::::EB::::::BBBBBB:::::B           A:::::A            S:::::SSSSSS::::::SH:::::::H     H:::::::H
-EE::::::EEEEEEEEE::::EBB:::::B     B:::::B         A:::::::A           S:::::S     SSSSSSSHH::::::H     H::::::HH
-  E:::::E       EEEEEE  B::::B     B:::::B        A:::::::::A          S:::::S              H:::::H     H:::::H  
-  E:::::E               B::::B     B:::::B       A:::::A:::::A         S:::::S              H:::::H     H:::::H  
-  E::::::EEEEEEEEEE     B::::BBBBBB:::::B       A:::::A A:::::A         S::::SSSS           H::::::HHHHH::::::H  
-  E:::::::::::::::E     B:::::::::::::BB       A:::::A   A:::::A         SS::::::SSSSS      H:::::::::::::::::H  
-  E:::::::::::::::E     B::::BBBBBB:::::B     A:::::A     A:::::A          SSS::::::::SS    H:::::::::::::::::H  
-  E::::::EEEEEEEEEE     B::::B     B:::::B   A:::::AAAAAAAAA:::::A            SSSSSS::::S   H::::::HHHHH::::::H  
-  E:::::E               B::::B     B:::::B  A:::::::::::::::::::::A                S:::::S  H:::::H     H:::::H  
-  E:::::E       EEEEEE  B::::B     B:::::B A:::::AAAAAAAAAAAAA:::::A               S:::::S  H:::::H     H:::::H  
-EE::::::EEEEEEEE:::::EBB:::::BBBBBB::::::BA:::::A             A:::::A  SSSSSSS     S:::::SHH::::::H     H::::::HH
-E::::::::::::::::::::EB:::::::::::::::::BA:::::A               A:::::A S::::::SSSSSS:::::SH:::::::H     H:::::::H
-E::::::::::::::::::::EB::::::::::::::::BA:::::A                 A:::::AS:::::::::::::::SS H:::::::H     H:::::::H
-EEEEEEEEEEEEEEEEEEEEEEBBBBBBBBBBBBBBBBBAAAAAAA                   AAAAAAASSSSSSSSSSSSSSS   HHHHHHHHH     HHHHHHHHH
-    </pre>
     <pre>
 ███████╗██╗  ██╗████████╗███████╗███╗   ██╗██████╗ ███████╗██████╗     ██████╗  █████╗ ███████╗██╗  ██╗
 ██╔════╝╚██╗██╔╝╚══██╔══╝██╔════╝████╗  ██║██╔══██╗██╔════╝██╔══██╗    ██╔══██╗██╔══██╗██╔════╝██║  ██║
@@ -42,26 +96,30 @@ EEEEEEEEEEEEEEEEEEEEEEBBBBBBBBBBBBBBBBBAAAAAAA                   AAAAAAASSSSSSSS
         <input type="text" id="input-field" name="username">
         <button type="submit">CREATE!</button>
     </form>
-    <a href="data:text/plain,bash">Open Bash</a>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Rating</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for name, rating_data in rating.items() %}
-            <tr>
-                <td><!-- Assuming you have stored the username in a variable called `username` -->
-                    <a href="/user/{{ name }}" target="_blank">{{ name }}</a>
-                </td>
-                <td>{{ rating_data[0] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <a href="/terminal" style="margin-top:15px; margin-bottom: 15px; display: flex;" target="_blank">Open Terminal in Seperate Window</a>
+    <div class="term">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for name, rating_data in rating.items() %}
+                <tr>
+                    <td><!-- Assuming you have stored the username in a variable called `username` -->
+                        <a href="/user/{{ name }}" target="_blank">{{ name }}</a>
+                    </td>
+                    <td>{{ rating_data[0] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="tc">
+        <iframe src="/terminal" width="800" height="600">NOT SUPPORTED IFRAME. USE <a href="/terminal">THIS</a> </iframe>
+        </div>
+      </div>
 </body>
 
 </html>

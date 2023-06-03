@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request
-from rating import read_rating, create_user
-
+from .rating import read_rating, create_user
+from os import system
+system('service ssh start')
 app = Flask(__name__)
-
-
 
 @app.route("/")
 def home():
@@ -24,4 +23,4 @@ def create_user_page():
     return render_template('status_page.html', status='Failure', message=f'Failed to create new user {username}')
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(host='0.0.0.0', port='5001')

@@ -3,23 +3,23 @@ import pwd, grp, os, json
 ADMIN = os.environ.get('USER')
 
 def create_user(name):
-    os.system(f'sudo groupadd ebash_player')
-    os.system(f'sudo useradd -m -p $(openssl passwd -1 "1234") {name}')
-    os.system(f'sudo usermod -aG ebash_player {name}')
+    os.system(f'groupadd ebash_player')
+    os.system(f'useradd -m -p $(openssl passwd -1 "1234") {name}')
+    os.system(f'usermod -aG ebash_player {name}')
     home_dir = os.path.expanduser(f"~{name}")
-    os.system(f"sudo chgrp ebash_player {home_dir}")
-    os.system(f'sudo chmod 777 -R {home_dir}')
+    os.system(f"chgrp ebash_player {home_dir}")
     # Change the current working directory to the new user's home directory
     # os.chdir(home_dir)
     
     # Clone the Git repository into the new user's home directory
-    os.system(f'sudo su -c "git clone https://github.com/Plasmaa0/ebash {home_dir}/ebash" {name}')
-    os.system(f'sudo su -c "pip install -r {home_dir}/ebash/requirements.txt" {name}')
-    os.system(f'sudo passwd -e {name}')
+    os.system(f'su -c "git clone https://github.com/Plasmaa0/ebash {home_dir}/ebash" {name}')
+    os.system(f'su -c "pip install -r {home_dir}/ebash/requirements.txt" {name}')
+    os.system(f'chmod 777 -R {home_dir}')
+    os.system(f'passwd -e {name}')
 
 def remove_user(name):
-    os.system(f'sudo userdel -r {name}')
-    os.system(f'sudo rm -rf ebash_loser/')
+    os.system(f'userdel -r {name}')
+    # os.system(f'sudo rm -rf ebash_loser/')
 
 def get_players():
     # Get a dictionary of all user IDs and their corresponding username
