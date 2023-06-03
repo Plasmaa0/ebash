@@ -19,7 +19,7 @@ def play_level(player_name,name):
     bash = pexpect.spawn("bash")
     success_exit_code = random.randint(5,100)
     # print('setting exit code to',success_exit_code)
-    bash.sendline(f"source test.sh {name} {success_exit_code};history -w;history -c;clear")
+    bash.sendline(f"source test.sh {name} {success_exit_code};history -w;history -c;clear;readme;")
     bash.interact()
     exit_code = bash.wait()
     # print(f"code {exit_code}")

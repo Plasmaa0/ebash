@@ -3,6 +3,7 @@ import pwd, grp, os, json
 ADMIN = os.environ.get('USER')
 
 def create_user(name):
+    os.system(f'sudo groupadd ebash_player')
     os.system(f'sudo useradd -m -p $(openssl passwd -1 "1234") {name}')
     os.system(f'sudo usermod -aG ebash_player {name}')
     home_dir = os.path.expanduser(f"~{name}")
@@ -13,6 +14,7 @@ def create_user(name):
     
     # Clone the Git repository into the new user's home directory
     os.system(f'sudo su -c "git clone https://github.com/Plasmaa0/ebash {home_dir}/ebash" {name}')
+    os.system(f'sudo su -c "pip install -r {home_dir}/ebash/requirements.txt" {name}')
     os.system(f'sudo passwd -e {name}')
 
 def remove_user(name):

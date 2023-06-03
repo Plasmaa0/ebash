@@ -20,7 +20,7 @@ def create_user_page():
     username = request.form['username']
     if username.isalnum() and not username.isdigit():
         create_user(username)
-        return render_template('status_page.html', status='Success', message=f'New user {username} successfully created')
+        return render_template('status_page.html', status='Success', message=f'New user {username} successfully created. Default password is 1234')
     return render_template('status_page.html', status='Failure', message=f'Failed to create new user {username}')
 
 if __name__ == "__main__":

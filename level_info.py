@@ -40,8 +40,8 @@ class MarkdownExampleApp(App):
     def action_help(self):
         self.push_screen(HelpWindow())
     
-    # def on_key(self, event) -> None:
-    #     self.exit()
+    def on_key(self, event) -> None:
+        self.exit()
     
     def compose(self) -> ComposeResult:
         about,readme,hint=get_level_data(self.level_name)

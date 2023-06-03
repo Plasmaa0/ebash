@@ -39,7 +39,7 @@ class LevelSelectTable(App):
             # Static("[green]Select level[/green] and hit [green]enter[/green]."),
             # Static("Press [red]q[/red] to [red]exit[/red]."),
             # Static("Press [cyan]l[/cyan] to see the [cyan]leaderboard[/cyan]."),
-            DataTable(),
+            DataTable(zebra_stripes=True),
             Footer()
         )
     
