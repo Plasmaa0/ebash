@@ -14,7 +14,7 @@ def create_user(name):
     # Clone the Git repository into the new user's home directory
     os.system(f'su -c "git clone https://github.com/Plasmaa0/ebash {home_dir}/ebash" {name}')
     os.system(f'su -c "pip install -r {home_dir}/ebash/requirements.txt" {name}')
-    # os.system(f'echo "cd {home_dir}/ebash; python3 ebash.py; exit" >> {home_dir}/.bashrc')
+    os.system(f'su -c "echo "cd {home_dir}/ebash; python3 ebash.py; exit" > {home_dir}/start.sh" {name}')
     os.system(f'chmod 777 -R {home_dir}')
     os.system(f'passwd -e {name}')
 
