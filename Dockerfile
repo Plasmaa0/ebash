@@ -33,7 +33,6 @@ EXPOSE 3000
 EXPOSE 5000
 CMD ["service", "ssh", "start"]
 
-RUN echo "cd ~/ebash; python3 ebash.py; exit" >> ~/.bashrc
 
 # CMD ["nginx", "-g", "daemon off;"]
 # Run app.py when the container launches
