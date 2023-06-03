@@ -9,7 +9,7 @@ services:
       build: .
       depends_on:
         - web
-      command: ["wetty", "--host", "0.0.0.0","--base", "/terminal", "--ssh-host", "web", "--ssh-port", "22","--allow-iframe", "-c", "bash"]
+      command: ["wetty", "--host", "0.0.0.0","--base", "/terminal", "--ssh-host", "web", "--ssh-port", "22","--allow-iframe", "-c", "bash", "-c", "'cd ebash; python3 ebash.py; exit;'"]
 
   nginx:
     build: .
