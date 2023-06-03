@@ -2,15 +2,11 @@ version: '3.7'
 services:
   web:
     build: .
-    ports:
-      - 5000:5000
     # command: ["flask", "--app", "web/app", "run"]s
     command: ["gunicorn", "-w", "4", "web.app:app", "-b", "0.0.0.0:5000"]
 
   wetty_container:
       build: .
-      ports:
-        - 3000:3000
       depends_on:
         - web
       command: ["wetty", "--host", "0.0.0.0","--base", "/terminal", "--ssh-host", "web", "--ssh-port", "22","--allow-iframe", "-c", "bash"]
@@ -18,7 +14,7 @@ services:
   nginx:
     build: .
     ports:
-      - 80:80
+      - 4065:80
     depends_on:
       - web
       - wetty_container

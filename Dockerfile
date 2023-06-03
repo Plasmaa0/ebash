@@ -29,6 +29,8 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # RUN service ssh start
 # Expose docker port 22
 EXPOSE 22
+EXPOSE 3000
+EXPOSE 5000
 CMD ["service", "ssh", "start"]
 
 # CMD ["nginx", "-g", "daemon off;"]
