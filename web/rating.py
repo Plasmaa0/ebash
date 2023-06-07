@@ -43,13 +43,20 @@ def read_rating():
                 rating = json.load(f)
                 try:
                     global_rating[player] = rating[player]
+                    # global_rating[player+'1'] = rating[player]
+                    # global_rating[player+'2'] = rating[player]
                 except:
                     global_rating[player] = [0,[]]
+                    # global_rating[player+'1'] = [0,[]]
+                    # global_rating[player+'2'] = [0,[]]
+                # import random
+                # global_rating[player][0] = random.randint(0,100)
+                # global_rating[player+'1'][0] = random.randint(0,100)
+                # global_rating[player+'2'][0] = random.randint(0,100)
         except Exception as e:
             print(e)
             continue
     return global_rating
-
 # remove_user("ebash_loser")
 # create_user("ebash_loser")
 

@@ -14,17 +14,52 @@
           display: flex;
           width: 100%;
           justify-content: center;
+        flex-direction: column;
           align-items: center;
+          position: relative;
         }
+.tc button {
+  margin: 10px;
+  padding: 10px;
+  width: 10%;
+}
         .term{
             display: flex;
             justify-content: space-between;
+          align-items: flex-start;
+
         }
         .term > table{
             display:block;
             width: 30%;
-            border: 2px solid #22ff34;;
+            border: 2px solid #22ff34;
+              border-collapse: separate;
         }
+        .term > table td, .term > table th{
+        width: 100%;
+        padding: 10px 50px; /* add some padding */
+        font-size: 1.2em; /* make the font size a bit larger */
+        text-align: center; /* center the text */
+    }
+    .term > table thead{
+        color: #ff00dd;
+    }
+    table tr:nth-child(1) td {
+  font-size: 160%;
+background-color: rgba(255, 215, 0, 0.2); /* Gold with 20% opacity */
+}
+
+table tr:nth-child(2) td {
+  font-size: 140%;
+  background-color: rgba(192, 192, 192, 0.2); /* Silver with 20% opacity */
+
+}
+
+table tr:nth-child(3) td {
+  font-size: 120%;
+  background-color: rgba(205, 133, 63, 0.2); /* Bronze with 20% opacity */
+
+}
         /* Set the background color to black */
 body {
   background-color: #1d1d1d;
@@ -88,9 +123,28 @@ hr {
 ██╔══╝   ██╔██╗    ██║   ██╔══╝  ██║╚██╗██║██║  ██║██╔══╝  ██║  ██║    ██╔══██╗██╔══██║╚════██║██╔══██║
 ███████╗██╔╝ ██╗   ██║   ███████╗██║ ╚████║██████╔╝███████╗██████╔╝    ██████╔╝██║  ██║███████║██║  ██║
 ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═══╝╚═════╝ ╚══════╝╚═════╝     ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
-                                                                                                       
-
     </pre>
+    <script>
+    function replacePreWithH1() {
+      if (document.documentElement.clientWidth < 600) {
+        const preElement = document.querySelector('pre');
+        const h1Element = document.createElement('h1');
+        h1Element.textContent = "Extended Bash";
+        preElement.replaceWith(h1Element);
+      }
+    }
+    window.onload = replacePreWithH1;
+    const observer = new ResizeObserver(entries => {
+  // Loop through the entries and execute your function
+      for (let entry of entries) {
+            replacePreWithH1();
+      }
+});
+    const rootElement = document.documentElement;
+
+    // Start observing the root element
+    observer.observe(rootElement);
+  </script>
     <form method="POST" action="/create-user">
         <label for="input-field">Create user:</label>
         <input type="text" id="input-field" name="username">
@@ -106,9 +160,16 @@ hr {
                 </tr>
             </thead>
             <tbody>
-                {% for name, rating_data in rating.items() %}
+                {% for index, (name, rating_data) in rating | enumerate %}
                 <tr>
                     <td><!-- Assuming you have stored the username in a variable called `username` -->
+                    {% if index == 0 %}
+                🥇
+            {% elif index == 1 %}
+                🥈
+            {% elif index == 2 %}
+                🥉
+            {% endif %}
                         <a href="/user/{{ name }}" target="_blank">{{ name }}</a>
                     </td>
                     <td>{{ rating_data[0] }}</td>
@@ -117,8 +178,21 @@ hr {
             </tbody>
         </table>
         <div class="tc">
-        <iframe src="/terminal" width="800" height="600">NOT SUPPORTED IFRAME. USE <a href="/terminal">THIS</a> </iframe>
+        <iframe id="myIframe" src="/terminal" width="800" height="600">NOT SUPPORTED IFRAME. USE <a href="/terminal">THIS</a> </iframe>
+        <button onclick="enlargeIframe()">Fullscreen</button>
         </div>
+        <script>
+    function enlargeIframe() {
+      var elem = document.getElementById("myIframe");
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+      }
+    }
+  </script>
       </div>
 </body>
 
