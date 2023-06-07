@@ -48,7 +48,7 @@ class MarkdownExampleApp(App):
         MARKDOWN = f"""\
 ### ABOUT
 
-_{about}_
+_{about.strip()}_
 
 # TASK
 

@@ -16,7 +16,7 @@ class SuccessDialog(App):
         yield Markdown(f"# You have successfully completed level '{self.level_name}'!\n## Press any key to continue", classes="color:green")
 
 def success_dialog(level_name):
-    app = SuccessDialog('touch_command')
+    app = SuccessDialog(level_name)
     app.run()
     
 if __name__=="__main__":

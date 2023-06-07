@@ -1,7 +1,9 @@
-import os
-from pathlib import Path
+# write your checking code here. it must output 0 or 1 as False/True as result of check.
 
-if 'i_am_learning_touch_command.txt' in os.listdir(Path.home()):
+import os
+usr=os.environ.get("USER")
+
+if 'file.txt' in os.listdir(f'/home/{usr}'):
     print(1)
 else:
     print(0)

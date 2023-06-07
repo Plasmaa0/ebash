@@ -1,25 +1,14 @@
-#set -euxo pipefail
-# cmd=(
-#   --list
-#     --column="Номер задания"
-#     --column="Пройдено"
-#     --column="Название"
-#     --column="Описание"
-#     --column=uuid
-#     --hide-column=5
-#     --print-column=5
-# )
-
-# level_folder=$(python ebash.py | xargs yad "${cmd[@]}" | python start_game.py)
 level_folder=levels/$1
+python3 $level_folder/pre.py
 echo Starting level!
+start_folder=$(pwd)
 
 hint () {
-    cat "$level_folder"/HINT.txt
+    cat "$start_folder"/"$level_folder"/HINT.txt
 }
 
 readme () {
-    cat "$level_folder"/README.txt
+    cat "$start_folder"/"$level_folder"/README.txt
 }
 
 echo "If you want to see this help message again call 'readme' function"
@@ -34,14 +23,14 @@ stop (){
 }
 
 args=("$@")
-start_folder=$(pwd)
 check (){
-  check_result=$(sh "$start_folder"/"$level_folder"/check.sh)
+  check_result=$(python3 "$start_folder"/"$level_folder"/check.py)
   if [[ "$check_result" == "1" ]]; then
       echo Completed!
+      python3 "$start_folder"/"$level_folder"/post.py
     #   echo exit code will be ${args[1]}
       exit ${args[1]}
   else
-      echo Not completed yet! Try executing quest_hint or quest_help functions to get help.
+      echo Not completed yet! Try executing hint or readme functions to get help.
   fi
 }
