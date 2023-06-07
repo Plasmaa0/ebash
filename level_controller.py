@@ -75,7 +75,7 @@ def select_level():
     return app.run()
 
 
-# if __name__ == "__main__":
-#     app = LevelSelectTable()
-#     result = app.run()
-#     print(result)
+if __name__ == "__main__":
+    app = LevelSelectTable()
+    result = app.run()
+    print(result)

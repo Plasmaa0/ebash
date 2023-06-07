@@ -8,7 +8,7 @@ hint () {
 }
 
 readme () {
-    cat "$start_folder"/"$level_folder"/README.txt
+    cat "$start_folder"/"$level_folder"/README.txt | less
 }
 
 echo "If you want to see this help message again call 'readme' function"

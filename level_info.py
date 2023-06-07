@@ -65,4 +65,4 @@ def show_level_info(level_name):
     app.run()
     
 if __name__ == '__main__':
-    show_level_info('touch_command')
+    show_level_info('006_cmake_program')
