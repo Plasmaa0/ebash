@@ -1,0 +1,8 @@
+To move file you should use 'mv' command.
+Simply you can use it such way:
+'mv <from-directory>/<filename> <to-directory>'
+If you are already in the same directory as a file you can skip <from-directory>:
+'mv <filename> <to-directory>'
+
+To rename file you just move it in the same directory as it was before but with different name:
+'mv <previous_name> <new_name>'

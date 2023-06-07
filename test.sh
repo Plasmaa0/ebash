@@ -19,6 +19,7 @@ stop (){
       unset -f readme
       unset -f hint
       unset -f stop
+      python3 "$start_folder"/"$level_folder"/post.py
       exit
 }
 
