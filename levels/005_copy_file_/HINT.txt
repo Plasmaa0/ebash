@@ -1,0 +1,3 @@
+To copy file you should use 'cp' command.
+You can use it such way:
+'rm filepath/filename new_filepath/new_filename'
