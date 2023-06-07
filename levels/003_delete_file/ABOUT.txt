@@ -1,0 +1,1 @@
+Delete file "delete_me.txt" in home directory using 'rm' command.
