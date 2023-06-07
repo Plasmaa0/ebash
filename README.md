@@ -1,16 +1,5 @@
 # EXBASH
 
-<style>
-    /* Style code blocks with a dark gray background and light gray text */
-pre {
-    background-image: linear-gradient(to bottom right, #22ff34, #ff00dd);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    padding: 10px;
-  }
-</style>
-
 <pre>
 ███████╗██╗  ██╗██████╗  █████╗ ███████╗██╗  ██╗
 ██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔════╝██║  ██║
