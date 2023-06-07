@@ -4,7 +4,7 @@ echo Starting level!
 start_folder=$(pwd)
 
 hint () {
-    cat "$start_folder"/"$level_folder"/HINT.txt
+    cat "$start_folder"/"$level_folder"/HINT.txt | less
 }
 
 readme () {
