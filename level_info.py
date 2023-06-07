@@ -2,11 +2,12 @@ from textual.app import App, ComposeResult
 from textual.widgets import MarkdownViewer,Markdown, Static, Footer, Button
 from textual.containers import VerticalScroll, Grid
 from textual.binding import Binding
-from textual.screen import ModalScreen
+from textual.screen import Screen
+from textual import events
 from level_controller import get_level_data
 
 
-class HelpWindow(ModalScreen):
+class HelpWindow(Screen):
     def compose(self) -> ComposeResult:
         help_md = '''\
         ## Useful commands
@@ -38,10 +39,11 @@ class MarkdownExampleApp(App):
         self.level_name = level_name
     
     def action_help(self):
-        self.push_screen(HelpWindow())
+        self.app.push_screen(HelpWindow())
     
-    def on_key(self, event) -> None:
-        self.exit()
+    def on_key(self, event:events.Key) -> None:
+        if event.key != "question_mark":
+            self.exit()
     
     def compose(self) -> ComposeResult:
         about,readme,hint=get_level_data(self.level_name)

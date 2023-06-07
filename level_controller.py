@@ -1,9 +1,10 @@
 from textual.app import App, ComposeResult, events
-from textual.widgets import DataTable, Static, Footer, Header
+from textual.widgets import DataTable, Footer, Button
 from textual.binding import Binding
-from textual.containers import VerticalScroll
+from textual.containers import VerticalScroll, Horizontal
 from rich.text import Text
 import os
+from quit_screen import QuitScreen
 
 def get_level_names():
     levels = os.listdir('levels')
@@ -33,9 +34,10 @@ def get_table_data():
     return table
 
 class LevelSelectTable(App):
+    CSS_PATH = "button.css"
     BINDINGS = [
-        Binding(key="enter", action="proceed", description="Play currently selected level"),
         Binding(key="q", action="quit", description="Quit the app"),
+        Binding(key="enter", action="proceed", description="Play currently selected level"),
         Binding(key="l", action="leaderboard", description="Show the leaderboard")
     ]
     def compose(self) -> ComposeResult:
@@ -44,8 +46,21 @@ class LevelSelectTable(App):
             # Static("Press [red]q[/red] to [red]exit[/red]."),
             # Static("Press [cyan]l[/cyan] to see the [cyan]leaderboard[/cyan]."),
             DataTable(zebra_stripes=True),
+            Horizontal(
+                Button.success("Начать!",name='start'),
+                Button("Рейтинг", variant="primary",name='rating'),
+                Button.error("Выйти", name='exit')
+            ),
             Footer()
         )
+    
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        if event.button.name == 'start':
+            self.action_proceed()
+        if event.button.name == 'rating':
+            self.action_leaderboard()
+        if event.button.name == 'exit':
+            self.action_quit()
     
     def on_mount(self) -> None:
         table = self.query_one(DataTable)
@@ -59,7 +74,7 @@ class LevelSelectTable(App):
         self.exit('LEADERBOARD')
     
     def action_quit(self):
-        self.exit()
+        self.push_screen(QuitScreen())
     
     def action_proceed(self):
         table = self.query_one(DataTable)
