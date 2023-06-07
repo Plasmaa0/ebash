@@ -1,8 +1,10 @@
-from os import mkdir
+from os import mkdir, listdir
 import argparse
 
 def create_level(name, folder, description, hint, readme,about):
-    folder_name = 'levels/' + folder.lower().replace(' ', '_')
+    level_num = len(listdir('levels'))
+    new_level_num = str(level_num).rjust(3,'0')
+    folder_name = 'levels/' + new_level_num+'_'+folder.lower().replace(' ', '_')
     mkdir(folder_name)
     with open(f"{folder_name}/HINT.txt", 'w') as hint_file:
         hint_file.write(hint)
