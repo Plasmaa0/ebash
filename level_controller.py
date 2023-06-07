@@ -25,6 +25,9 @@ def get_table_data():
     table = []
     for index, name in enumerate(names):
         about,readme, hint = get_level_data(name)
+        if name[:3].isdigit() and name[3]=='_':
+            name = name[4:]
+        name = name.replace('_', ' ')
         table.append((name, about))
     return table
 

@@ -1,0 +1,3 @@
+touch command syntax:
+
+touch <filename>
