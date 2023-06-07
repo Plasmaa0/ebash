@@ -19,7 +19,7 @@ def home():
 
 @app.route('/user/<name>')
 def user(name=None):
-    rating  = read_rating()
+    rating  = read_rating()[name]
     return render_template('user_rating.html', name=name, rating=rating)
 
 @app.route('/create-user', methods=['POST'])
