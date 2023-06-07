@@ -1,0 +1,1 @@
+Copy file "copy_me.txt" from home directory to ~/copy_here folder.
