@@ -6,7 +6,7 @@ WORKDIR /app
 
 # # Update packages and install necessary dependencies
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip nginx git npm nodejs openssh-server sudo
+    apt-get install -y python3 python3-pip nginx git npm nodejs openssh-server sudo cmake nano neovim vim
 
 RUN npm install -g n
 RUN n stable
