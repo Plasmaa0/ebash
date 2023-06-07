@@ -31,6 +31,9 @@ def select_level(player_name):
     level_name = select_level_table()
     if level_name is None:
         exit()
+    if level_name == "ERROR":
+        print('error')
+        exit(1)
     if level_name == "LEADERBOARD":
         show_leaderboard(player_name)
     elif proceed_to_level(level_name):
