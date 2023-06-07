@@ -1,3 +1,3 @@
-cd ~/ebash; 
-python3 ebash.py;
+cd ~/exbash; 
+python3 exbash.py;
 exit

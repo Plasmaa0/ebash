@@ -1,6 +1,6 @@
 {
     "plasmaa0": [
-        7,
+        13,
         [
             "touch_command",
             "level_wajlvlxgao",
@@ -8,7 +8,13 @@
             "level_bccganjdvo",
             "level_jaliwynbyq",
             "level_dxozfxpxpi",
-            "level_yezqlzkqlr"
+            "level_yezqlzkqlr",
+            "test",
+            "001_cd_command",
+            "003_delete_file",
+            "004_mv_command",
+            "005_copy_file",
+            "006_cmake_program"
         ]
     ],
     "123123": [
