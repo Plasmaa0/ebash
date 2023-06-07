@@ -39,7 +39,7 @@ def read_rating():
     global_rating = {}
     for player,homedir in players:
         try:
-            with open(f'{homedir}/exbash/rating.json', 'r') as f:
+            with open(f'{homedir}/.exbash/rating.json', 'r') as f:
                 rating = json.load(f)
                 try:
                     global_rating[player] = rating[player]
