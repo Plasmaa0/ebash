@@ -1,0 +1,4 @@
+To delete file you should use 'rm' command.
+Simply you can use it such way:
+'rm filename'
+Don't forget to cd to home directory!
