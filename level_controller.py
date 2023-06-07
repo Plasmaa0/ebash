@@ -7,6 +7,7 @@ import os
 
 def get_level_names():
     levels = os.listdir('levels')
+    levels.sort()
     levels.remove('.gitkeep')
     return levels
 
@@ -25,6 +26,9 @@ def get_table_data():
     table = []
     for index, name in enumerate(names):
         about,readme, hint = get_level_data(name)
+        if name[:3].isdigit() and name[3]=='_':
+            name = name[4:]
+        name = name.replace('_', ' ')
         table.append((name, about))
     return table
 
@@ -59,16 +63,20 @@ class LevelSelectTable(App):
     
     def action_proceed(self):
         table = self.query_one(DataTable)
-        # exit(row_key)
-        row = table.get_row(table.coordinate_to_cell_key(table.cursor_coordinate).row_key)
-        level_name = row[0]
-        self.exit(level_name)
+        row_index= str(table.cursor_coordinate.row+1)
+        row_str = row_index.rjust(3,'0')
+        for file in os.listdir('levels'):
+            if row_str in file:
+                self.exit(file)
+                return
+        self.exit('ERROR')
 
 def select_level():
     app = LevelSelectTable()
     return app.run()
 
 
-# if __name__ == "__main__":
-#     app = LevelSelectTable()
-#     app.run()
+if __name__ == "__main__":
+    app = LevelSelectTable()
+    result = app.run()
+    print(result)
