@@ -1,35 +1,3 @@
 {
-    "plasmaa0": [
-        13,
-        [
-            "touch_command",
-            "level_wajlvlxgao",
-            "sample_level",
-            "level_bccganjdvo",
-            "level_jaliwynbyq",
-            "level_dxozfxpxpi",
-            "level_yezqlzkqlr",
-            "test",
-            "001_cd_command",
-            "003_delete_file",
-            "004_mv_command",
-            "005_copy_file",
-            "006_cmake_program"
-        ]
-    ],
-    "123123": [
-        6,
-        [
-            "touch_command",
-            "1233456",
-            "sfdgsdfg",
-            "touchsdfgsdfg_command",
-            ";oshdfgko;oksndfhg",
-            "sdfgsdfgsdfg"
-        ]
-    ],
-    "62354235": [
-        0,
-        []
-    ]
+    
 }
