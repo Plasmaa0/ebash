@@ -1,4 +1,4 @@
 cd ~/.exbash; 
 python3 exbash.py;
-find ~ ! -name '.exbash' ! -name '.start.sh' -type f -delete && find ~ ! -name '.exbash' ! -name '.start.sh' -type d -delete
+find . | grep -v ".exbash" | grep -v ".start.sh"| grep -v ".bash_logout"| grep -v ".bashrc"| grep -v ".profile"| grep -v ".cache"| grep -v ".bash_history"| grep -v ".lesshst" | xargs rm -rf;
 exit
